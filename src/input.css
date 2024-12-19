@@ -1,0 +1,46 @@
+/* imported google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+/* 
+the syntax below is just how tailwind organises its imports
+base: resets all css to ensure that styling is consistent in all browsers
+componenets: they set multiple css class attributes for that particular component class
+utilities: they are the class attributes we set for each component. they only set the few atomic css properties for that particular class
+
+the components layer will overwrite the base layer and the utilities layer will overwrite the components and the base layer
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* this is a tailwind css layer directive. This is just an organisation techniques to add styling to the different layers, in this case its the base layer. Base styles usually only target html tags */
+@layer base {
+  html {
+    font-family: "Quicksands", sans-serif;
+  }
+  h1 {
+    @apply text-6xl font-bold;
+  }
+  h2 {
+    @apply text-5xl font-bold;
+  }
+  h3 {
+    @apply text-4xl font-bold;
+  }
+  h4 {
+    @apply text-3xl font-bold;
+  }
+  h5 {
+    @apply text-2xl font-bold;
+  }
+  h6 {
+    @apply text-xl font-bold;
+  }
+}
+
+@layer components {
+  /* creating a component class will reduce styling redundancy. However, this would increase the output.css and thus the bundle size. So this should be the last resort, especially in component-based frameworks */
+  .menu-item {
+    @apply relative flex h-full items-center cursor-pointer p-4 font-bold text-pink-200 hover:text-zinc-200 hover:bg-white/10 transition-colors ease-in-out;
+  }
+}
